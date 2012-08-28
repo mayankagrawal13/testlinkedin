@@ -1,0 +1,16 @@
+<h1>Make a LinkedIn Post</h1>
+<%= form_tag('/dopost')  do |f| %>
+
+ <div class="field">
+    <%= label_tag 'title', 'Post Title' %><br />
+    <%= text_field_tag  :posttitle %><br />
+  </div>
+  <div class="field">
+    <%= label_tag 'summary', 'Post Summary' %><br />
+    <%= text_field_tag :postsummary %><br />
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Post'%>
+  </div>
+<% end %>
+

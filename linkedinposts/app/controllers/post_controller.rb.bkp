@@ -1,0 +1,28 @@
+require 'oauth'
+class PostController < ApplicationController
+  def makepost
+       respond_to do |format|
+          format.html 
+       end
+  end
+  def dopost
+       api_key = '0j5m1xz9fzcf'
+       api_secret = 'NPOg4f33Z6szybLU'
+       user_token = 'a1d9da0f-d199-4846-ad65-3706cd65deba'
+       user_secret = '54a66023-8cf4-4480-82d5-2172f6e02568'
+
+       configuration = {:site=> 'https://api.linked.com'}
+
+       consumer = OAuth::Consumer.new(api_key, api_secret, configuration)
+
+       @access_token = OAuth::AccessToken.new(consumer, user_token, user_secret)
+       @posttitle = params[:posttitle]
+       @postsummary = params[:postsummary]
+       response = @access_token.post('http://api.linkedin.com/v1/groups/4588653/posts', "<post><title>#{@posttitle}</title><summary>#{@postsummary}</summary></post>", {'Content-Type' => 'application/xml'})
+
+       respond_to do |format|
+          format.html
+       end
+
+  end
+end
