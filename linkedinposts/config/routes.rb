@@ -1,8 +1,11 @@
 Linkedinposts::Application.routes.draw do
 #  get "post/makepost"
   match "/auth"   => "post#auth"
-  match "/lipost" => "post#makepost"
-  match "/dopost" => 'post#dopost'  
+  match "/home" => "post#home"
+  match "/show" => "post#show"
+  match "/new" => 'post#new'
+  match "/create" => 'post#create'  
+  match "/delete/:id" => 'post#delete'
 # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,14 @@
+<h1>Linked In Post Application</h1>
+
+<p><%= link_to "Make a New Post", :controller => "post", :action => "new" %>
+</p>
+
+<table >
+    <% @posts.each do |post| %>
+    <tr>
+       <td><img src="<%= post['creator']['pictureUrl'] %>" /><br /><span style='color: #aaaaaa; font-size: 12px;'><%= post['creator']['firstName'] %></span></td>
+       <td><p><span style='color: #069; font-size: 16px'><%= post['title'] %></span><br /><span style='font-size: 14px;'><%= post['summary'] %></span><br /><span style='font-size: 11px; color: #aaaaaa;'><%= Time.at(post['creationTimestamp']) %></span><br /><a style='color: #069; font-size: 14px;text-decoration:none;' href='/delete/<%= post['id'].split('-').last %>'>Delete</a></p></td>    
+    </tr>
+    <% end %>
+</table>
+<br />
